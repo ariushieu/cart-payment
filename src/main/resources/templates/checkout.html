@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Thông tin thanh toán')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin thanh toán | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('checkout')}"></header>
 
+<main class="main-content">
+    <section class="page-hero compact">
+        <div class="container">
+            <p class="eyebrow">Thông tin nhận tài liệu</p>
+            <h1>Chỉ còn một bước nữa.</h1>
+            <p>Điền chính xác email để hệ thống gửi liên kết tải tài liệu sau thanh toán.</p>
+            <div class="checkout-progress" aria-label="Tiến trình thanh toán">
+                <div class="progress-step is-complete" data-step="1"><span>Giỏ hàng</span></div>
+                <div class="progress-connector is-complete"></div>
+                <div class="progress-step is-active" data-step="2"><span>Thông tin</span></div>
+                <div class="progress-connector"></div>
+                <div class="progress-step" data-step="3"><span>Thanh toán</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container two-column-layout">
+        <form class="panel checkout-form" id="checkout-form" action="payment.html" th:action="@{/payment}" method="get" data-checkout-form>
+            <div class="form-section">
+                <div class="form-section-heading">
+                    <span class="form-section-number">1</span>
+                    <div><h2>Thông tin cá nhân</h2><p>Dùng để xác nhận đơn và gửi tài liệu.</p></div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="customer-name">Họ và tên <span class="required">*</span></label>
+                        <input type="text" id="customer-name" name="customerName" placeholder="Nguyễn Văn An" autocomplete="name" required minlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Số điện thoại</label>
+                        <input type="tel" id="customer-phone" name="customerPhone" placeholder="0912 345 678" autocomplete="tel" pattern="[0-9 +]{9,15}">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="customer-email">Email nhận tài liệu <span class="required">*</span></label>
+                        <input type="email" id="customer-email" name="customerEmail" placeholder="ban@example.com" autocomplete="email" required>
+                        <span class="form-hint">Vui lòng kiểm tra kỹ. Liên kết tải sẽ được gửi đến email này.</span>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="order-note">Ghi chú</label>
+                        <textarea id="order-note" name="note" placeholder="Thông tin thêm cho đơn hàng (không bắt buộc)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="form-section-heading">
+                    <span class="form-section-number">2</span>
+                    <div><h2>Phương thức thanh toán</h2><p>Giao dịch sẽ được tự động đối soát.</p></div>
+                </div>
+
+                <label class="payment-choice">
+                    <input type="radio" name="paymentMethod" value="BANK_TRANSFER" checked>
+                    <span class="payment-choice-icon">QR</span>
+                    <span class="payment-choice-copy"><strong>Chuyển khoản ngân hàng</strong><small>Quét mã QR · Xác nhận tự động qua SePay</small></span>
+                    <strong>0đ phí</strong>
+                </label>
+            </div>
+
+            <div class="form-section">
+                <button class="btn btn-primary btn-block" type="submit" id="place-order-button">Tạo đơn và thanh toán <span aria-hidden="true">→</span></button>
+                <p class="secure-note">Bằng việc tiếp tục, bạn đồng ý rằng tài liệu số không hoàn lại sau khi đã tải xuống.</p>
+            </div>
+        </form>
+
+        <aside class="panel summary-panel" aria-label="Đơn hàng của bạn">
+            <h2>Đơn hàng của bạn</h2>
+            <div class="mini-order-list">
+                <div class="mini-order-item">
+                    <span class="mini-cover">PDF</span>
+                    <div><strong>Kiểm thử tự động từ A–Z</strong><span>96 trang</span></div>
+                    <strong>89.000đ</strong>
+                </div>
+                <div class="mini-order-item">
+                    <span class="mini-cover orange">PDF</span>
+                    <div><strong>Java Spring Boot thực chiến</strong><span>142 trang</span></div>
+                    <strong>119.000đ</strong>
+                </div>
+            </div>
+            <div class="summary-row"><span>Tạm tính</span><strong>208.000đ</strong></div>
+            <div class="summary-row"><span>Phí xử lý</span><strong>0đ</strong></div>
+            <div class="summary-row total"><span>Tổng cộng</span><strong>208.000đ</strong></div>
+            <a class="text-link" href="cart.html" th:href="@{/cart}">← Quay lại giỏ hàng</a>
+        </aside>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

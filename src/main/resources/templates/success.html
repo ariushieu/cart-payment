@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Thanh toán thành công')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán thành công | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('success')}"></header>
 
+<main class="result-page">
+    <section class="result-card" aria-labelledby="result-title">
+        <div class="result-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow">Thanh toán thành công</p>
+        <h1 id="result-title">Tài liệu đã sẵn sàng!</h1>
+        <p class="result-lead">Cảm ơn bạn đã đặt hàng. Liên kết tải cũng đã được gửi đến <strong>ban@example.com</strong>.</p>
+        <div class="order-reference">Mã đơn hàng <strong>#EDU26080501</strong></div>
+
+        <div class="result-detail-box" aria-label="Chi tiết thanh toán">
+            <div class="result-detail-row"><span>Thời gian</span><strong>05/08/2026 · 14:18</strong></div>
+            <div class="result-detail-row"><span>Phương thức</span><strong>Chuyển khoản qua SePay</strong></div>
+            <div class="result-detail-row"><span>Tổng thanh toán</span><strong>208.000đ</strong></div>
+        </div>
+
+        <div class="download-list">
+            <h2>Tài liệu của bạn</h2>
+            <div class="download-item">
+                <span class="download-file">PDF</span>
+                <div><strong>Kiểm thử tự động từ A–Z</strong><small>12.4 MB · PDF</small></div>
+                <button class="btn btn-outline download-btn" type="button" data-demo-download>Tải xuống</button>
+            </div>
+            <div class="download-item">
+                <span class="download-file">PDF</span>
+                <div><strong>Java Spring Boot thực chiến</strong><small>18.7 MB · PDF</small></div>
+                <button class="btn btn-outline download-btn" type="button" data-demo-download>Tải xuống</button>
+            </div>
+        </div>
+
+        <div class="result-actions">
+            <a class="btn btn-secondary" href="index.html" th:href="@{/}">Tiếp tục khám phá</a>
+            <a class="btn btn-outline" href="mailto:hotro@edudocs.vn">Cần hỗ trợ?</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Thanh toán chuyển khoản')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán chuyển khoản | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('payment')}"></header>
 
+<main class="main-content">
+    <section class="payment-shell">
+        <div class="payment-header">
+            <p class="eyebrow">Đơn hàng #EDU26080501</p>
+            <h1>Quét mã để thanh toán.</h1>
+            <p>Mở ứng dụng ngân hàng, quét QR và kiểm tra đúng nội dung trước khi chuyển.</p>
+        </div>
+
+        <div class="payment-card">
+            <div class="qr-side">
+                <h2>Quét bằng ứng dụng ngân hàng</h2>
+                <p>Mã đã bao gồm số tiền và nội dung chuyển khoản.</p>
+                <div class="qr-frame">
+                    <div class="qr-placeholder" aria-label="Vị trí mã QR thanh toán" data-qr-placeholder><span>VietQR</span></div>
+                </div>
+                <span class="qr-note">Mã QR mẫu cho giai đoạn thiết kế giao diện</span>
+            </div>
+
+            <div class="payment-detail-side">
+                <div class="payment-status"><span class="status-dot"></span>Đang chờ thanh toán</div>
+                <p class="payment-amount-label">Số tiền cần thanh toán</p>
+                <div class="payment-amount" id="payment-amount">208.000đ</div>
+
+                <dl class="bank-details">
+                    <div class="bank-row">
+                        <dt>Ngân hàng</dt>
+                        <dd>MB Bank</dd>
+                        <span></span>
+                    </div>
+                    <div class="bank-row">
+                        <dt>Số tài khoản</dt>
+                        <dd id="bank-account">0123 456 789</dd>
+                        <button class="copy-btn" type="button" data-copy-target="bank-account">Sao chép</button>
+                    </div>
+                    <div class="bank-row">
+                        <dt>Chủ tài khoản</dt>
+                        <dd>NGUYEN VAN AN</dd>
+                        <span></span>
+                    </div>
+                    <div class="bank-row">
+                        <dt>Nội dung</dt>
+                        <dd id="transfer-content">EDU26080501</dd>
+                        <button class="copy-btn" type="button" data-copy-target="transfer-content">Sao chép</button>
+                    </div>
+                </dl>
+
+                <div class="payment-warning"><strong>Quan trọng:</strong> Không sửa nội dung chuyển khoản để hệ thống nhận diện đúng đơn hàng.</div>
+                <div class="payment-expiry"><span>Đơn hàng hết hạn sau</span><strong data-countdown="900">15:00</strong></div>
+
+                <div class="payment-demo-actions">
+                    <a class="btn btn-secondary" href="success.html" th:href="@{/payment/success}" id="simulate-success">Mô phỏng thành công</a>
+                    <a class="btn btn-outline" href="failed.html" th:href="@{/payment/failed}" id="simulate-failed">Mô phỏng thất bại</a>
+                </div>
+            </div>
+        </div>
+
+        <p class="secure-note centered-note">SePay sẽ báo về webhook và hệ thống tự động cập nhật trạng thái khi giao dịch hợp lệ.</p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

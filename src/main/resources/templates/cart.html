@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Giỏ hàng')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('cart')}"></header>
 
+<main class="main-content">
+    <section class="page-hero compact">
+        <div class="container">
+            <p class="eyebrow">Giỏ hàng của bạn</p>
+            <h1>Chọn xong rồi chứ?</h1>
+            <p>Kiểm tra lại tài liệu trước khi chuyển sang bước điền thông tin.</p>
+            <div class="checkout-progress" aria-label="Tiến trình thanh toán">
+                <div class="progress-step is-active" data-step="1"><span>Giỏ hàng</span></div>
+                <div class="progress-connector"></div>
+                <div class="progress-step" data-step="2"><span>Thông tin</span></div>
+                <div class="progress-connector"></div>
+                <div class="progress-step" data-step="3"><span>Thanh toán</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container two-column-layout">
+        <div>
+            <div class="panel cart-list" id="cart-items" data-cart-list>
+                <div class="panel-header">
+                    <h2>Tài liệu đã chọn</h2>
+                    <span data-cart-label>2 sản phẩm</span>
+                </div>
+
+                <article class="cart-item" data-cart-item data-price="89000">
+                    <div class="cart-cover">PDF</div>
+                    <div>
+                        <div class="cart-item-category">Kiểm thử</div>
+                        <h3>Kiểm thử tự động từ A–Z</h3>
+                        <p class="cart-item-meta"><span>96 trang</span><span>PDF · 12.4 MB</span><span>Tải về trọn đời</span></p>
+                    </div>
+                    <div class="cart-item-side">
+                        <span class="cart-item-price">89.000đ</span>
+                        <button class="remove-item" type="button" aria-label="Xóa Kiểm thử tự động từ A-Z" data-remove-item>Xóa khỏi giỏ</button>
+                    </div>
+                </article>
+
+                <article class="cart-item" data-cart-item data-price="119000">
+                    <div class="cart-cover orange">PDF</div>
+                    <div>
+                        <div class="cart-item-category">Lập trình</div>
+                        <h3>Java Spring Boot thực chiến</h3>
+                        <p class="cart-item-meta"><span>142 trang</span><span>PDF · 18.7 MB</span><span>Tải về trọn đời</span></p>
+                    </div>
+                    <div class="cart-item-side">
+                        <span class="cart-item-price">119.000đ</span>
+                        <button class="remove-item" type="button" aria-label="Xóa Java Spring Boot thực chiến" data-remove-item>Xóa khỏi giỏ</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="cart-promise" aria-label="Quyền lợi khi mua tài liệu">
+                <div class="promise-item"><strong>Nhận ngay sau thanh toán</strong><span>Không phải chờ xét duyệt thủ công</span></div>
+                <div class="promise-item"><strong>Liên kết tải riêng tư</strong><span>Gửi trực tiếp đến email của bạn</span></div>
+                <div class="promise-item"><strong>Hỗ trợ mỗi ngày</strong><span>Phản hồi trong vòng 2 giờ</span></div>
+            </div>
+
+            <p class="back-link"><a class="text-link" href="index.html" th:href="@{/}">← Tiếp tục chọn tài liệu</a></p>
+        </div>
+
+        <aside class="panel summary-panel" aria-label="Tóm tắt đơn hàng">
+            <h2>Tóm tắt đơn hàng</h2>
+            <div class="summary-row"><span>Tạm tính</span><strong data-cart-subtotal>208.000đ</strong></div>
+            <div class="summary-row"><span>Phí xử lý</span><strong>0đ</strong></div>
+            <div class="summary-row total"><span>Tổng thanh toán</span><strong data-cart-total>208.000đ</strong></div>
+            <a class="btn btn-primary btn-block" href="checkout.html" th:href="@{/checkout}" id="checkout-button">Tiến hành thanh toán <span aria-hidden="true">→</span></a>
+            <p class="secure-note">Bạn chỉ thanh toán khi đã kiểm tra kỹ các tài liệu trong giỏ.</p>
+        </aside>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

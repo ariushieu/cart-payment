@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduDocs - Kho tài liệu số chọn lọc dành cho sinh viên.">
+    <title th:text="${pageTitle} + ' | EduDocs'">EduDocs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header class="site-header" th:fragment="header(activePage)">
+    <div class="container header-inner">
+        <a class="brand" href="index.html" th:href="@{/}" aria-label="EduDocs - Trang chủ">
+            <span class="brand-mark" aria-hidden="true">E</span>
+            <span class="brand-copy">
+                <strong>EduDocs</strong>
+                <small>Học đúng trọng tâm</small>
+            </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" data-menu-toggle>
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Điều hướng chính" data-main-nav>
+            <a href="index.html" th:href="@{/}"
+               th:classappend="${activePage == 'catalog'} ? ' is-active' : ''">Kho tài liệu</a>
+            <a href="index.html#how-it-works" th:href="@{/#how-it-works}">Cách hoạt động</a>
+            <a href="#support">Hỗ trợ</a>
+        </nav>
+
+        <a class="cart-link" href="cart.html" th:href="@{/cart}" id="header-cart" aria-label="Mở giỏ hàng">
+            <span class="cart-icon" aria-hidden="true"></span>
+            <span>Giỏ hàng</span>
+            <span class="cart-count" id="cart-count">2</span>
+        </a>
+    </div>
+</header>
+
+<footer class="site-footer" th:fragment="footer">
+    <div class="container footer-grid" id="support">
+        <div>
+            <a class="brand brand-light" href="index.html" th:href="@{/}">
+                <span class="brand-mark" aria-hidden="true">E</span>
+                <span class="brand-copy"><strong>EduDocs</strong><small>Học đúng trọng tâm</small></span>
+            </a>
+            <p>Tài liệu số được chọn lọc để việc học của bạn rõ ràng và hiệu quả hơn.</p>
+        </div>
+        <div>
+            <h2>Khám phá</h2>
+            <a href="index.html" th:href="@{/}">Kho tài liệu</a>
+            <a href="cart.html" th:href="@{/cart}">Giỏ hàng</a>
+        </div>
+        <div>
+            <h2>Hỗ trợ</h2>
+            <a href="mailto:hotro@edudocs.vn">hotro@edudocs.vn</a>
+            <span>08:00–22:00 mỗi ngày</span>
+        </div>
+        <div class="footer-note">
+            <span>Thanh toán an toàn qua</span>
+            <strong>SePay</strong>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <span>© 2026 EduDocs</span>
+        <span>Bài thực hành kiểm thử tự động</span>
+    </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" th:fragment="toast" data-toast>
+    <span class="toast-check" aria-hidden="true">✓</span>
+    <span data-toast-message>Đã thêm vào giỏ hàng</span>
+</div>
+
+<th:block th:fragment="scripts">
+    <script src="../static/js/app.js" th:src="@{/js/app.js}"></script>
+</th:block>
+</body>
+</html>

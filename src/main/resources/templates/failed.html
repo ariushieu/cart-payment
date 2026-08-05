@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Thanh toán chưa thành công')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán chưa thành công | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('failed')}"></header>
 
+<main class="result-page">
+    <section class="result-card" aria-labelledby="failed-title">
+        <div class="result-icon failed" aria-hidden="true">!</div>
+        <p class="eyebrow">Giao dịch chưa hoàn tất</p>
+        <h1 id="failed-title">Chưa nhận được thanh toán.</h1>
+        <p class="result-lead">Đơn hàng <strong>#EDU26080501</strong> vẫn được giữ trong 15 phút. Bạn có thể thử lại mà không cần nhập lại thông tin.</p>
+
+        <div class="failure-reasons">
+            <strong>Bạn hãy kiểm tra:</strong>
+            <ul>
+                <li>Giao dịch đã được ngân hàng báo thành công hay chưa.</li>
+                <li>Số tiền chuyển khoản có đúng 208.000đ không.</li>
+                <li>Nội dung chuyển khoản có đúng mã EDU26080501 không.</li>
+            </ul>
+        </div>
+
+        <div class="result-detail-box" aria-label="Thông tin đơn hàng">
+            <div class="result-detail-row"><span>Mã đơn hàng</span><strong>#EDU26080501</strong></div>
+            <div class="result-detail-row"><span>Số tiền</span><strong>208.000đ</strong></div>
+            <div class="result-detail-row"><span>Trạng thái</span><strong class="text-danger">Chưa thanh toán</strong></div>
+        </div>
+
+        <div class="result-actions">
+            <a class="btn btn-primary" href="payment.html" th:href="@{/payment}" id="retry-payment">Thử thanh toán lại</a>
+            <a class="btn btn-outline" href="mailto:hotro@edudocs.vn?subject=Hỗ trợ đơn EDU26080501">Liên hệ hỗ trợ</a>
+        </div>
+    </section>
+</main>
+
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

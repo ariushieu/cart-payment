@@ -1,10 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Kho tài liệu')}">
     <meta charset="UTF-8">
-    <title>Danh sách sản phẩm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kho tài liệu | EduDocs</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
+<header th:replace="~{fragments :: header('catalog')}"></header>
 
+<main class="main-content">
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow">Kho học liệu số dành cho sinh viên</p>
+                <h1>Học đúng.<br><em>Hiểu sâu.</em></h1>
+                <p>Tài liệu cô đọng, bám sát môn học và được trình bày dễ hiểu. Chọn tài liệu bạn cần, thanh toán một lần và tải về ngay.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#catalog">Khám phá tài liệu <span aria-hidden="true">→</span></a>
+                    <span class="hero-trust">Tải về tức thì sau thanh toán</span>
+                </div>
+            </div>
+
+            <aside class="hero-card" aria-label="Tài liệu nổi bật tuần này">
+                <div class="hero-card-label">
+                    <span>Nổi bật tuần này</span>
+                    <span>Best seller</span>
+                </div>
+                <h2>Kiểm thử tự động từ A–Z</h2>
+                <p>Lộ trình thực hành Selenium, JUnit và CI/CD qua 12 bài lab có hướng dẫn.</p>
+                <div class="progress-line" aria-label="72 phần trăm sinh viên đã hoàn thành"><span></span></div>
+                <div class="hero-card-meta"><span>12 bài thực hành</span><span>72% hoàn thành</span></div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="catalog-section" id="catalog">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Chọn đúng thứ bạn cần</p>
+                    <h2>Tài liệu mới nhất</h2>
+                </div>
+                <p>Mỗi tài liệu đều có mục tiêu rõ ràng, nội dung thực tế và định dạng thuận tiện để học trên mọi thiết bị.</p>
+            </div>
+
+            <div class="catalog-tools">
+                <label class="search-box">
+                    <span class="sr-only" hidden>Tìm kiếm tài liệu</span>
+                    <input type="search" id="document-search" placeholder="Tìm theo tên tài liệu, môn học..." autocomplete="off" data-search>
+                </label>
+                <div class="filter-list" role="group" aria-label="Lọc theo chủ đề">
+                    <button class="filter-chip is-active" type="button" data-filter="all">Tất cả</button>
+                    <button class="filter-chip" type="button" data-filter="lap-trinh">Lập trình</button>
+                    <button class="filter-chip" type="button" data-filter="kiem-thu">Kiểm thử</button>
+                    <button class="filter-chip" type="button" data-filter="du-lieu">Dữ liệu</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-list" data-product-grid>
+                <article class="product-card" data-product-card data-category="kiem-thu" data-name="Kiểm thử tự động từ A–Z">
+                    <div class="document-cover">
+                        <span class="file-badge">PDF · 96 trang</span>
+                        <span class="cover-number">01</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Kiểm thử</span><span>4.9 · 126 lượt tải</span></div>
+                        <h3>Kiểm thử tự động từ A–Z</h3>
+                        <p>Thực hành Selenium, JUnit và quy trình CI/CD qua 12 bài lab từng bước.</p>
+                        <div class="product-footer">
+                            <span class="price">89.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Kiểm thử tự động từ A–Z">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product-card data-category="lap-trinh" data-name="Java Spring Boot thực chiến">
+                    <div class="document-cover cover-orange">
+                        <span class="file-badge">PDF · 142 trang</span>
+                        <span class="cover-number">02</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Lập trình</span><span>4.8 · 98 lượt tải</span></div>
+                        <h3>Java Spring Boot thực chiến</h3>
+                        <p>Xây dựng ứng dụng web hoàn chỉnh với MVC, JPA, Thymeleaf và REST API.</p>
+                        <div class="product-footer">
+                            <span class="price">119.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Java Spring Boot thực chiến">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product-card data-category="du-lieu" data-name="Cơ sở dữ liệu và SQL">
+                    <div class="document-cover cover-blue">
+                        <span class="file-badge">PDF · 118 trang</span>
+                        <span class="cover-number">03</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Dữ liệu</span><span>4.9 · 87 lượt tải</span></div>
+                        <h3>Cơ sở dữ liệu và SQL</h3>
+                        <p>Tóm tắt lý thuyết, chuẩn hóa dữ liệu và 80 bài tập SQL có lời giải chi tiết.</p>
+                        <div class="product-footer">
+                            <span class="price">79.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Cơ sở dữ liệu và SQL">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product-card data-category="lap-trinh" data-name="Cấu trúc dữ liệu và giải thuật">
+                    <div class="document-cover cover-purple">
+                        <span class="file-badge">PDF · 130 trang</span>
+                        <span class="cover-number">04</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Lập trình</span><span>4.7 · 74 lượt tải</span></div>
+                        <h3>Cấu trúc dữ liệu &amp; giải thuật</h3>
+                        <p>Sơ đồ trực quan, ví dụ Java và bộ câu hỏi ôn tập theo từng chương.</p>
+                        <div class="product-footer">
+                            <span class="price">99.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Cấu trúc dữ liệu và giải thuật">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product-card data-category="kiem-thu" data-name="Thiết kế test case hiệu quả">
+                    <div class="document-cover cover-ochre">
+                        <span class="file-badge">PDF · 84 trang</span>
+                        <span class="cover-number">05</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Kiểm thử</span><span>4.8 · 63 lượt tải</span></div>
+                        <h3>Thiết kế test case hiệu quả</h3>
+                        <p>Kỹ thuật hộp đen, bảng quyết định và bộ mẫu test case dùng ngay cho đồ án.</p>
+                        <div class="product-footer">
+                            <span class="price">69.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Thiết kế test case hiệu quả">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-product-card data-category="du-lieu" data-name="Phân tích và thiết kế hệ thống">
+                    <div class="document-cover cover-slate">
+                        <span class="file-badge">PDF · 105 trang</span>
+                        <span class="cover-number">06</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-meta"><span class="category-label">Phân tích</span><span>4.7 · 51 lượt tải</span></div>
+                        <h3>Phân tích &amp; thiết kế hệ thống</h3>
+                        <p>Use case, UML và tài liệu đặc tả mẫu cho một dự án phần mềm hoàn chỉnh.</p>
+                        <div class="product-footer">
+                            <span class="price">89.000đ <small>Thanh toán một lần</small></span>
+                            <button class="btn btn-secondary add-cart-btn" type="button" data-add-cart data-product="Phân tích và thiết kế hệ thống">Thêm vào giỏ</button>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="empty-search" data-empty-search>
+                    <strong>Chưa tìm thấy tài liệu phù hợp.</strong>
+                    <p>Thử một từ khóa hoặc chủ đề khác nhé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+        <div class="container how-grid">
+            <div class="how-copy">
+                <p class="eyebrow">Nhanh gọn trong vài phút</p>
+                <h2>Từ giỏ hàng đến tài liệu chỉ qua 3 bước.</h2>
+                <p>Luồng mua được thiết kế rõ ràng, dễ theo dõi và tự động xác nhận thanh toán qua SePay.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step"><div><h3>Chọn tài liệu</h3><p>Thêm một hoặc nhiều tài liệu phù hợp vào giỏ.</p></div></div>
+                <div class="how-step"><div><h3>Quét mã chuyển khoản</h3><p>Dùng ứng dụng ngân hàng và giữ nguyên nội dung giao dịch.</p></div></div>
+                <div class="how-step"><div><h3>Tải về ngay</h3><p>Hệ thống xác nhận và mở liên kết tải tài liệu tự động.</p></div></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+<div th:replace="~{fragments :: toast}"></div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>
